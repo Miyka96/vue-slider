@@ -11,7 +11,7 @@
 </head>
 <body>
     <div id="container">
-        <div class="row">
+        <div class="row" @mouseenter="stopAutoPlay" @mouseleave="startAutoPlay">
             <div class="col-9">
                 <img v-for="(slide, i) in slides"  :src="slide.image" class="img-wrapper" :class=" i === currentIndex ? 'active' : '' " >
                 <!-- bindo la classe :active... se i === currentindex, allora(?) aggiungo classe 'active', altrimenti(:) stringa vuota ('') -->
@@ -28,7 +28,11 @@
             <div class="col-2">
                 <div class="row-cols-6">
                     <div class="row-col-2">
-                        <img v-for="(slide, i) in slides"  :src="slide.image" class="preview-img" :class=" i === currentIndex ? 'active-preview' : '' ">
+                        <img v-for="(slide, i) in slides"  
+                        :src="slide.image" 
+                        class="preview-img" 
+                        :class=" i === currentIndex ? 'active-preview' : '' "
+                        @click="goToSlide(i)">
                     </div>
                 </div>
             </div>

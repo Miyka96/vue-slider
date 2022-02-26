@@ -38,6 +38,7 @@ const app = new Vue (
                 }
             ],
             currentIndex: 0,
+            interval: undefined,
         },
 
 
@@ -47,7 +48,7 @@ const app = new Vue (
                     this.currentIndex --
                 }
                 else{
-                    this.currentIndex = 5
+                    this.currentIndex = 5;
                 }
             },
             down: function() {
@@ -55,11 +56,23 @@ const app = new Vue (
                     this.currentIndex ++
                 }
                 else {
-                    this.currentIndex = 0
+                    this.currentIndex = 0;
                 }
             },
-
-
+            goToSlide: function(i) {
+                this.currentIndex = i;
+            },
+            startAutoPlay: function(){
+                this.interval = setInterval( this.down ,3000 )
+            },
+            stopAutoPlay: function() {
+                clearInterval(this.interval)
+            },
         },
+
+        mounted() {
+            this.startAutoPlay();
+        },
+    
     }
 )
