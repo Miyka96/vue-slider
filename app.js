@@ -1,6 +1,8 @@
 const app = new Vue (
     {
         el: "#container",
+
+
         data: {
             slides:
             [
@@ -36,9 +38,28 @@ const app = new Vue (
                 }
             ],
             currentIndex: 0,
+        },
 
-        }
+
+        methods: {
+            up: function() {
+                if (this.currentIndex > 0){
+                    this.currentIndex --
+                }
+                else{
+                    this.currentIndex = 5
+                }
+            },
+            down: function() {
+                if (this.currentIndex < 5){
+                    this.currentIndex ++
+                }
+                else {
+                    this.currentIndex = 0
+                }
+            },
+
+
+        },
     }
 )
-
-console.log(slides)

@@ -13,12 +13,13 @@
     <div id="container">
         <div class="row">
             <div class="col-9">
-                <img v-for="slide in slides"  :src="slide.image" class="img-wrapper">
+                <img v-for="(slide, i) in slides"  :src="slide.image" class="img-wrapper" :class=" i === currentIndex ? 'active' : '' " >
+                <!-- bindo la classe :active... se i === currentindex, allora(?) aggiungo classe 'active', altrimenti(:) stringa vuota ('') -->
                 
-                    <div v-for="slide in slides" class="description"> 
+                    <div v-for="(slide, i) in slides" class="description" :class=" i === currentIndex ? 'active' : '' "> 
                         <h3>{{ slide.title }}</h3>
                     </div>
-                    <div v-for="slide in slides" class="description-bis "> 
+                    <div v-for="(slide, i) in slides" class="description-bis" :class=" i === currentIndex ? 'active' : '' "> 
                         <p>{{ slide.description}}</p>
                     </div>
 
@@ -27,13 +28,18 @@
             <div class="col-2">
                 <div class="row-cols-6">
                     <div class="row-col-2">
-                        <img v-for="slide in slides"  :src="slide.image" class="img-wrapper">
+                        <img v-for="(slide, i) in slides"  :src="slide.image" class="preview-img" :class=" i === currentIndex ? 'active-preview' : '' ">
                     </div>
                 </div>
             </div>
             <div class="buttons col-1">
-                <div class="up"> <i class="fas fa-chevron-circle-up"></i></div>
-                <div class="down"> <i class="fas fa-chevron-circle-down"></i></div>
+                <div class="up" @click="up"> 
+                    <i class="fas fa-chevron-circle-up"></i>
+                </div>
+
+                <div class="down" @click="down"> 
+                    <i class="fas fa-chevron-circle-down"></i>
+                </div>
             </div>
         </div>
 
