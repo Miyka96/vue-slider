@@ -6,21 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My personal GOTY</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <div class="container">
+    <div id="container">
         <div class="row">
             <div class="col-9">
-                <div class="img-wrapper">
-                </div>
+                <img v-for="slide in slides"  :src="slide.image" class="img-wrapper">
+                
+                    <div v-for="slide in slides" class="description"> 
+                        <h3>{{ slide.title }}</h3>
+                    </div>
+                    <div v-for="slide in slides" class="description-bis "> 
+                        <p>{{ slide.description}}</p>
+                    </div>
 
-                <div class="description"></div>
-                <div class="description-bis"></div>
             </div>
+
             <div class="col-2">
                 <div class="row-cols-6">
-                    <!-- row-col-2 -->
+                    <div class="row-col-2">
+                        <img v-for="slide in slides"  :src="slide.image" class="img-wrapper">
+                    </div>
                 </div>
             </div>
             <div class="buttons col-1">
